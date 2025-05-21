@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'org.github.Dutap01.bot'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        setUrl("https://maven.lavalink.dev/releases")
+    }
+    maven {
+        setUrl("https://jitpack.io")
+    }
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation("net.dv8tion:JDA:5.5.1")
+    implementation("dev.arbjerg:lavaplayer:2.2.3")
+    implementation("dev.lavalink.youtube:common:1.13.2")
+
+    implementation 'org.slf4j:slf4j-api:2.0.12'
+    implementation 'ch.qos.logback:logback-classic:1.5.6'
+    implementation 'ch.qos.logback:logback-core:1.5.6'
+
+
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+jar {
+    manifest {
+        attributes 'Main-Class': 'org.github.Dutap01.bot.DiscordBot'
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+application {
+    mainClass = 'org.github.Dutap01.bot.DiscordBot' // 여기에 메인 클래스 경로를 정확히 지정합니다.
+}
