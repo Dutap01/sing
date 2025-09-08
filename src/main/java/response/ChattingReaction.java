@@ -40,7 +40,7 @@ public class ChattingReaction extends ListenerAdapter {
             displayNowPlaying(event);
         } else if (messageContent.startsWith("!promote ")) {
             if (event.getMember() == null || event.getMember().getVoiceState() == null || !event.getMember().getVoiceState().inAudioChannel() || !event.getGuild().getSelfMember().getVoiceState().inAudioChannel()) {
-                event.getChannel().sendMessage("음악을 승격하려면 먼저 보이스 채널에 접속하고 봇이 연결되어 있어야 합니다.").queue();
+                event.getChannel().sendMessage("음악을 재생할려면 먼저 보이스 채널에 접속하고 봇이 연결되어 있어야 합니다.").queue();
                 return;
             }
             String[] parts = messageContent.split(" ");
