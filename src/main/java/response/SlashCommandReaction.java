@@ -49,12 +49,12 @@ public class SlashCommandReaction extends ListenerAdapter {
                 break;
             case "promote":
                 if (event.getMember() == null || event.getMember().getVoiceState() == null || !event.getMember().getVoiceState().inAudioChannel() || !event.getGuild().getSelfMember().getVoiceState().inAudioChannel()) {
-                    event.reply("음악을 승격하려면 먼저 보이스 채널에 접속하고 봇이 연결되어 있어야 합니다.").setEphemeral(true).queue();
+                    event.reply("음악을 재생 할려면 먼저 보이스 채널에 접속하고 봇이 연결되어 있어야 합니다.").setEphemeral(true).queue();
                     return;
                 }
                 OptionMapping indexOption = event.getOption("index");
                 if (indexOption == null) {
-                    event.reply("승격할 곡의 번호를 입력해주세요.").setEphemeral(true).queue();
+                    event.reply("재생 할 곡의 번호를 입력해주세요.").setEphemeral(true).queue();
                     return;
                 }
                 int trackIndex = indexOption.getAsInt();
