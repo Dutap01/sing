@@ -1,2 +1,2 @@
 # -
-Discord Singbot
+Discord Songbot
